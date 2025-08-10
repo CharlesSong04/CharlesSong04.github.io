@@ -214,7 +214,12 @@ function initSidebarAutoHide() {
     }
     mainContent.addEventListener('scroll', requestTick);
 }
-document.addEventListener('DOMContentLoaded', function() {
-    initSidebarAutoHide();
+const images = document.querySelectorAll('.gallery img');
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    images.forEach(image => {
+      image.classList.remove('selected'); 
+    });
+    img.classList.add('selected');
+  });
 });
-sidebar.style.transition = 'transform 0.5s ease-in-out';
